@@ -12,6 +12,7 @@ services:
         bind:
             $bite: 'ma super bite'
             $email: '%env(EMAIL_DEFAULT)%'
+            $numberFetcherLogger: '@monolog.logger.numberFetcher'
 
     # makes classes in src/ available to be used as Services
     # this creates a service per class whose id is the fully-qualified class name
@@ -25,7 +26,6 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-
-

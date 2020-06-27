@@ -5,6 +5,12 @@ monolog:
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
             channels: ["!event"]
+        number_fetcher_logs:
+            type: stream
+            path: "%kernel.logs_dir%/numberFetcher.log"
+            level: debug
+            channels: ["numberFetcher"]
+
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:

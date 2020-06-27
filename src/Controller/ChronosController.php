@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Services\RandomNumberFetcher;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,11 +35,12 @@ class ChronosController extends AbstractController
      * @Route("/random-number", name="app_random_number", methods={"POST"})
      *
      * @param RandomNumberFetcher $randomNumberFetcher
+     * @param LoggerInterface $logger
      *
      * @return JsonResponse
      */
     public function getRandomNumber(RandomNumberFetcher $randomNumberFetcher)
     {
-        return new JsonResponse(['randomNumber' => $randomNumberFetcher::getRandomNumber()]);
+        return new JsonResponse(['randomNumber' => $randomNumberFetcher->getRandomNumber()]);
     }
 }

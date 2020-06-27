@@ -13,8 +13,9 @@ class ChronosController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function index()
+    public function index(string $bite)
     {
+        dump($bite); // return "ma super bite" from service.yaml
         return $this->render('pages/show.html.twig', [
             'title' => 'Chronos',
         ]);

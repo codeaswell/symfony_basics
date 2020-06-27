@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Services\RandomNumberFetcher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,9 +12,9 @@ class ChronosController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function index(string $bite)
+    public function index(string $email)
     {
-        dump($bite); // return "ma super bite" from service.yaml
+        dump($email);
         return $this->render('pages/show.html.twig', [
             'title' => 'Chronos',
         ]);

@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Services\RandomNumberFetcher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,10 +33,12 @@ class ChronosController extends AbstractController
     /**
      * @Route("/random-number", name="app_random_number", methods={"POST"})
      *
+     * @param RandomNumberFetcher $randomNumberFetcher
+     *
      * @return JsonResponse
      */
-    public function getRandomNumber()
+    public function getRandomNumber(RandomNumberFetcher $randomNumberFetcher)
     {
-        return new JsonResponse(['randomNumber' => rand(0, 100)]);
+        return new JsonResponse(['randomNumber' => $randomNumberFetcher::getRandomNumber()]);
     }
 }
